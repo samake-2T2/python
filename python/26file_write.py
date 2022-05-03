@@ -60,3 +60,49 @@ except :
 finally :
     f.close
 
+
+# #### with open() as 변수명
+# - close작업을 자동으로 처리
+
+# In[1]:
+
+
+path = 'dataset/test.txt'
+
+
+# In[5]:
+
+
+with open(path, 'r', encoding='utf-8-sig') as f :
+    data = f.readlines() # 반환 리스트
+    print(data)
+
+
+# #### 실습
+# 
+# '''
+# 사용자의 입력을 파일(xxx.txt)에 저장하는 프로그램을 작성하세요.  
+# 
+# (단, 프로그램을 다시 실행하더라도 파일명이 동일하다면  
+# 기존 작성한 내용을 그대로 유지하고,
+# 새로 입력된 내용이 추가되어야 합니다.  
+# 파일명도 마지막에 입력받아서 생성하세요.)  
+# '''
+
+# In[13]:
+
+
+fname = input('저장할 파일의 이름을 입력하세요: ')
+
+path = 'dataset/' + fname + '.txt'
+
+with open(path, 'a', encoding='utf-8-sig') as f :
+    while True :
+        data = input('파일에 넣을 내용을 입력하세요: ')
+        if data == '그만' :
+            break
+        else :
+            f.write(data + '\n')# 한줄씩 쓰기
+            # writeline() # 데이터를 한번에 쓰기
+        
+
